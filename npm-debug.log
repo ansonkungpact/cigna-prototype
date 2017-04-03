@@ -7,8 +7,8 @@
 6 silly lifecycle node-js-getting-started@0.2.5~prestart: no script for prestart, continuing
 7 info lifecycle node-js-getting-started@0.2.5~start: node-js-getting-started@0.2.5
 8 verbose lifecycle node-js-getting-started@0.2.5~start: unsafe-perm in lifecycle true
-9 verbose lifecycle node-js-getting-started@0.2.5~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/ansonkung/Documents/pactera/chinalife-prototype/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ansonkung/Library/Android/sdk/platform-tools:/Users/ansonkung/Library/Android/sdk/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
-10 verbose lifecycle node-js-getting-started@0.2.5~start: CWD: /Users/ansonkung/Documents/pactera/chinalife-prototype
+9 verbose lifecycle node-js-getting-started@0.2.5~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/ansonkung/Documents/pactera/cigna-prototype/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ansonkung/Library/Android/sdk/platform-tools:/Users/ansonkung/Library/Android/sdk/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+10 verbose lifecycle node-js-getting-started@0.2.5~start: CWD: /Users/ansonkung/Documents/pactera/cigna-prototype
 11 silly lifecycle node-js-getting-started@0.2.5~start: Args: [ '-c', 'node index.js' ]
 12 silly lifecycle node-js-getting-started@0.2.5~start: Returned: code: 1  signal: null
 13 info lifecycle node-js-getting-started@0.2.5~start: Failed to exec start script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:886:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid node-js-getting-started@0.2.5
-16 verbose cwd /Users/ansonkung/Documents/pactera/chinalife-prototype
+16 verbose cwd /Users/ansonkung/Documents/pactera/cigna-prototype
 17 error Darwin 15.3.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 19 error node v6.10.1
