@@ -2,7 +2,7 @@
 /********** GENERAL TEXT STYLE **********/
 /* line 358, custom.scss */
 a {
-  color: #009b63;
+  color: #188ccc;
 }
 
 /* line 362, custom.scss */
@@ -254,7 +254,7 @@ ul.chat-list li.chat-bubble.user::before {
   position: absolute;
   top: 0;
   right: 0;
-  background: #009b63;
+  background: #188ccc;
   -webkit-border-bottom-right-radius: 10px;
   border-bottom-right-radius: 10px;
   -webkit-border-top-right-radius: 10px;
@@ -271,7 +271,7 @@ ul.chat-list li.chat-bubble.user::before {
 ul.chat-list li.chat-bubble.user:last-child .chat-bubble-tail {
   width: 10px;
   height: 10px;
-  background: #009b63;
+  background: #188ccc;
   position: absolute;
   bottom: -10px;
   right: -8px;
@@ -522,14 +522,14 @@ ul.chat-list .timestamp {
   width: 80px;
   margin: 10px 20px 0 0;
   padding: 0;
-  color: #009b63;
+  color: #188ccc;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 500;
   text-align: center;
   float: right;
   background: none;
-  border: 2px solid #009b63;
+  border: 2px solid #188ccc;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
   -webkit-transition: 0.25s;
@@ -568,7 +568,7 @@ ul.chat-list .timestamp {
   -webkit-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-  border: 4px solid #009b63;
+  border: 4px solid #188ccc;
 }
 @media (max-width: 1023px) {
   /* line 815, custom.scss */
@@ -584,7 +584,7 @@ ul.chat-list .timestamp {
     -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
     -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
-    border: 2px solid #009b63;
+    border: 2px solid #188ccc;
   }
 }
 
@@ -948,7 +948,7 @@ table.baggage-calc-response-2 .values td {
 }
 /* line 1218, custom.scss */
 .modal.feedback .feedback-step-2 .icon-tick {
-  color: #009b63;
+  color: #188ccc;
   font-size: 3rem;
 }
 /* line 1224, custom.scss */
@@ -1138,7 +1138,7 @@ table.baggage-calc-response-2 .values td {
 .btn.btn-secondary {
   background: white;
   border: 1px solid #c6c2c1;
-  color: #009b63;
+  color: #188ccc;
 }
 /* line 1365, custom.scss */
 .btn.btn-secondary:hover, .btn.btn-secondary:focus {
@@ -1341,7 +1341,7 @@ li.chat-bubble.vera.widget.faq .widget-feedback .btn-secondary {
   }
 }
 .chatbot-focus {
-    border: 1px solid #009b63;
+    border: 1px solid #188ccc;
     -webkit-box-shadow: 0px 0px 15px 0px rgba(246,139,31,0.66);
     -moz-box-shadow: 0px 0px 15px 0px rgba(246,139,31,0.66);
     box-shadow: 0px 0px 15px 0px rgba(246,139,31,0.66);
@@ -1417,7 +1417,7 @@ li.chat-bubble {
   cursor: pointer;
 }
 .chat-header {
- background: #009b63;
+ background: #188ccc;
     color: white;
 }
 .chatbot-collapse .chat-window {
