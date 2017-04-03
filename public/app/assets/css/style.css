@@ -90,7 +90,7 @@ a, a:hover, a:focus {
 
 .btn-theme {
     color: #fff;
-    background-color: #009b63;
+    background-color: #188ccc;
     border: 0;
 }
 
@@ -235,7 +235,7 @@ hr {
 }
 
 .bg-theme {
-    background-color: #009b63;
+    background-color: #188ccc;
 }
 
 ul.top-menu>li>.logout {
@@ -835,7 +835,7 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
     content: ' ';
     width: 14px;
     height: 14px;
-    background: #009b63;
+    background: #188ccc;
     border-radius: 50px;
     position: absolute;
     top: 8px;
@@ -916,7 +916,7 @@ ul.top-menu>li>a:hover, ul.top-menu>li>a:focus {
     line-height: 60px;
     height: 60px;
     margin: 0;
-    background: #009b63;
+    background: #188ccc;
     text-align: center;
 }
 
@@ -1161,7 +1161,7 @@ PANELS CONFIGURATIONS
 
 .theme-panel .theme-header {
     text-align: center;
-    background: #009b63;
+    background: #188ccc;
     padding: 3px;
     margin-bottom: 15px;
     color: #fff;
@@ -1231,7 +1231,7 @@ PANELS CONFIGURATIONS
 
 .green-panel {
     text-align: center;
-    background: #009b63;
+    background: #188ccc;
 }
 
 .green-panel .green-header {
@@ -1283,7 +1283,7 @@ PANELS CONFIGURATIONS
 }
 
 .white-panel i {
-    color: #009b63;
+    color: #188ccc;
     padding-right: 4px;
     font-size: 14px;
 }
@@ -1531,7 +1531,7 @@ PANELS CONFIGURATIONS
 }
 
 .calendar-month-header {
-    background: #009b63;
+    background: #188ccc;
     color: white;
 }
 
@@ -2127,7 +2127,7 @@ label {
     margin: 0;
     padding: 25px 20px;
     text-align: center;
-    background: #009b63;
+    background: #188ccc;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
