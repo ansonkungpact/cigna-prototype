@@ -1,5 +1,6 @@
 var cNlcModule = function() {
     const USE_LUIS_PREVIEW_MODE = false;
+    const translate = require('google-translate-api');
 
     var that = {};
     
@@ -23,7 +24,7 @@ var cNlcModule = function() {
     var luisURL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/";
 
     // MS Cognitive Service
-    var luisID = '08939128-978d-408d-9c01-0f791c357d69';
+    var luisID = '20f886a5-cd24-43b7-b145-8c5ef6401261';
     if (process.env.MS_LUIS_ID) {
       // console.log("using env.MS_LUIS_ID");
       luisID = process.env.MS_LUIS_ID;
@@ -35,7 +36,7 @@ var cNlcModule = function() {
       phraselistId = process.env.MS_PHRASE_LIST_ID;
     }
 
-    var subscriptionkey = '85104b00ebda46949246c9828ee9f281';
+    var subscriptionkey = '2ae235d8af814771ad5c5653ce46ab93';
     var isLog = false;
     var moduleName = 'NLC_MODULE';
 
@@ -47,44 +48,58 @@ var cNlcModule = function() {
     var requestNlc = function(q,successCallback, failureCallback){
         // console.log(q);
         q = qs.escape(q);
-        var url = luisURL+luisID+'?subscription-key='+subscriptionkey+'&verbose=true&q='+q;
-        var opt = {
-         url:url,
-         method:'GET',
-        }
-       request(opt, function (err, response, body) {
-        try {
-          var result = JSON.parse(body);
-          // console.log(body,moduleName,isLog);
-          var topScoringIntent = result["topScoringIntent"];
-
-          if (!USE_LUIS_PREVIEW_MODE) {
-            // production mode
-            var intents = result["intents"];
-            if (intents && Array.isArray(intents) && intents.length > 0) {
-              topScoringIntent = intents[0];
+        var url = luisURL+luisID+'?subscription-key='+subscriptionkey+'&verbose=true&q=';
+        console.log('translating.......');
+        console.log(decodeURIComponent(q));
+        translate(decodeURIComponent(q), {to: 'en'}).then(res => {
+            // console.log(res);
+            console.log(res.text.toLowerCase());
+            console.log('testing again');
+            q = res.text;
+            url = url + res.text.toLowerCase();
+            console.log(url);
+        
+            var opt = {
+             url:url,
+             method:'GET',
             }
-          }
 
-          if (topScoringIntent && topScoringIntent["intent"]) {
-            var tempResult = {};
-            tempResult["intent"] = topScoringIntent["intent"];
-            tempResult["entities"] = result["entities"];
-            // console.log(tempResult,moduleName,isLog);
-            successCallback(tempResult);
-          }
-          else if (result.statusCode == 429){
-            failureCallback('429');
-          }
-          else {
-            failureCallback(result.message);
-          }
-        } 
-        catch (e) {
-          // console.log(e);
-          failureCallback('429');        
-        }
-       });
+            request(opt, function (err, response, body) {
+              try {
+                var result = JSON.parse(body);
+                // console.log(body,moduleName,isLog);
+                var topScoringIntent = result["topScoringIntent"];
+
+                if (!USE_LUIS_PREVIEW_MODE) {
+                  // production mode
+                  var intents = result["intents"];
+                  if (intents && Array.isArray(intents) && intents.length > 0) {
+                    topScoringIntent = intents[0];
+                  }
+                }
+
+                if (topScoringIntent && topScoringIntent["intent"]) {
+                  var tempResult = {};
+                  tempResult["intent"] = topScoringIntent["intent"];
+                  tempResult["entities"] = result["entities"];
+                  // console.log(tempResult,moduleName,isLog);
+                  successCallback(tempResult);
+                }
+                else if (result.statusCode == 429){
+                  failureCallback('429');
+                }
+                else {
+                  failureCallback(result.message);
+                }
+              } 
+              catch (e) {
+                // console.log(e);
+                failureCallback('429');        
+              }
+            });
+        }).catch(err => {
+            console.error(err);
+        });
     }
 
     that.splitDataSets = function(){
