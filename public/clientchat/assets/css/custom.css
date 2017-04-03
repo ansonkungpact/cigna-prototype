@@ -1400,7 +1400,9 @@ li.chat-bubble {
   display: none;
   margin-bottom: 20px;
 }
-
+.dynamic-content img {
+  width: 100%;
+}
 .dynamic-content.show-content {
   display: block;
 }
