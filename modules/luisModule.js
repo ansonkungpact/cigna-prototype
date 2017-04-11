@@ -1,6 +1,5 @@
 var cNlcModule = function() {
     const USE_LUIS_PREVIEW_MODE = false;
-    const translate = require('google-translate-api');
 
     var that = {};
     
@@ -48,58 +47,44 @@ var cNlcModule = function() {
     var requestNlc = function(q,successCallback, failureCallback){
         // console.log(q);
         q = qs.escape(q);
-        var url = luisURL+luisID+'?subscription-key='+subscriptionkey+'&verbose=true&q=';
-        console.log('translating.......');
-        console.log(decodeURIComponent(q));
-        translate(decodeURIComponent(q), {to: 'en'}).then(res => {
-            // console.log(res);
-            console.log(res.text.toLowerCase());
-            console.log('testing again');
-            q = res.text;
-            url = url + res.text.toLowerCase();
-            console.log(url);
-        
-            var opt = {
-             url:url,
-             method:'GET',
+        var url = luisURL+luisID+'?subscription-key='+subscriptionkey+'&verbose=true&q='+q;
+        var opt = {
+         url:url,
+         method:'GET',
+        }
+       request(opt, function (err, response, body) {
+        try {
+          var result = JSON.parse(body);
+          // console.log(body,moduleName,isLog);
+          var topScoringIntent = result["topScoringIntent"];
+
+          if (!USE_LUIS_PREVIEW_MODE) {
+            // production mode
+            var intents = result["intents"];
+            if (intents && Array.isArray(intents) && intents.length > 0) {
+              topScoringIntent = intents[0];
             }
+          }
 
-            request(opt, function (err, response, body) {
-              try {
-                var result = JSON.parse(body);
-                // console.log(body,moduleName,isLog);
-                var topScoringIntent = result["topScoringIntent"];
-
-                if (!USE_LUIS_PREVIEW_MODE) {
-                  // production mode
-                  var intents = result["intents"];
-                  if (intents && Array.isArray(intents) && intents.length > 0) {
-                    topScoringIntent = intents[0];
-                  }
-                }
-
-                if (topScoringIntent && topScoringIntent["intent"]) {
-                  var tempResult = {};
-                  tempResult["intent"] = topScoringIntent["intent"];
-                  tempResult["entities"] = result["entities"];
-                  // console.log(tempResult,moduleName,isLog);
-                  successCallback(tempResult);
-                }
-                else if (result.statusCode == 429){
-                  failureCallback('429');
-                }
-                else {
-                  failureCallback(result.message);
-                }
-              } 
-              catch (e) {
-                // console.log(e);
-                failureCallback('429');        
-              }
-            });
-        }).catch(err => {
-            console.error(err);
-        });
+          if (topScoringIntent && topScoringIntent["intent"]) {
+            var tempResult = {};
+            tempResult["intent"] = topScoringIntent["intent"];
+            tempResult["entities"] = result["entities"];
+            // console.log(tempResult,moduleName,isLog);
+            successCallback(tempResult);
+          }
+          else if (result.statusCode == 429){
+            failureCallback('429');
+          }
+          else {
+            failureCallback(result.message);
+          }
+        } 
+        catch (e) {
+          // console.log(e);
+          failureCallback('429');        
+        }
+       });
     }
 
     that.splitDataSets = function(){
